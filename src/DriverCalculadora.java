@@ -1,11 +1,13 @@
 /**
- * 
+ * Universidad del Valle de Guatemala
+ * Algoritmos y Estructuras de Datos
+ * Prof: Douglas Barrios
+ * Grupo:
+ * Edwin Coronado
+ * Cristian Castillo
+ * Maria Fernanda Davila
  */
 
-/**
- * @author Edwin Coronado
- *
- */
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -26,7 +28,6 @@ import java.nio.file.Paths;
 			System.out.println(datos+"\n");
 			calcu.setString(datos);
 			calcu.meterVector();
-			//System.out.println(calcu.getStackS());
 		}
 		catch (IOException e)
 		{
@@ -39,7 +40,6 @@ import java.nio.file.Paths;
 		}
 		else if(calcu.calcularVector()==false)
 			System.out.println("El formato del documento datos.txt es incorrecto, reviselo porfavor");
-		System.out.println(calcu.getStackS());//Indiccador para saber el tamanio del stack luego de todo
 	}
 
 }
