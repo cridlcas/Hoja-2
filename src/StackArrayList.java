@@ -1,23 +1,14 @@
-/**
- * Universidad del Valle de Guatemala
- * Algoritmos y Estructuras de Datos
- * Prof: Douglas Barrios
- * Grupo:
- * Edwin Coronado
- * Cristian Castillo
- * Maria Fernanda Davila
- */
-import java.util.Vector;
+import java.util.ArrayList;
 
-public class StackVector<E>
+public class StackArrayList<E>
  implements Stack<E>
 {
-	protected Vector<E> data;
+	protected ArrayList<E> data;
 
-	public StackVector()
+	public StackArrayList()
 	// post: constructs a new, empty stack
 	{
-		data = new Vector<E>();
+		data = new ArrayList<E>();
 	}
 
 	public void push(E item)
