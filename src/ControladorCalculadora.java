@@ -55,83 +55,95 @@ public class ControladorCalculadora implements Calculadora {
 		boolean bandera=true;//Sirve para saber que se hagan los ifs
 		
 		//caracter=miStack.peek();
-		if(miStack.peek()<48||miStack.peek()>57)
+		try
 		{
-			bandera=false;
-		}
-		else
-		{
-			try
+			if(miStack.peek()<48||miStack.peek()>57&& bandera==true)
 			{
-				caracter=miStack.peek();
-				
-			if(miStack.peek()>=48&&miStack.peek()<=57)
+				bandera=false;
+			}
+			else
 			{
-				caracter=miStack.pop();
-				operando1=Character.getNumericValue(caracter);
-				lCadena-=1;
-				while(bandera==true&&lCadena>=0)
+				/*try
+				{*/
+					caracter=miStack.peek();
+					
+				if(miStack.peek()>=48&&miStack.peek()<=57)
 				{
-						try//Este try esta en caso de que haiga in index out bounds termina el proceso y manda error
-						//Por ejemplo espacios demas en el documento
-						{
-							if(miStack.peek()==32)
-							{
-								caracter=miStack.pop();
-								lCadena-=1;
-								if(miStack.peek()>=48&&miStack.peek()<=57&&bOperando==false)
-								{
-									caracter=miStack.pop();
-									operando2=Character.getNumericValue(caracter);
-									lCadena-=1;
-									bOperando=true;
-								}
-								else if (miStack.peek()=='+'||miStack.peek()=='-'||miStack.peek()=='*'||miStack.peek()=='/'&&bOperando==true)
+					caracter=miStack.pop();
+					operando1=Character.getNumericValue(caracter);
+					lCadena-=1;
+					while(bandera==true&&lCadena>=0)
+					{
+							/*try
+							{*/
+								if(miStack.peek()==32)
 								{
 									caracter=miStack.pop();
 									lCadena-=1;
-									bOperando=false;
-									try
+									if(miStack.peek()>=48&&miStack.peek()<=57&&bOperando==false)
 									{
-										if(caracter=='+')
-											operando1=operando1+operando2;
-										if(caracter=='-')
-											operando1=operando1-operando2;
-										if(caracter=='*')
-											operando1=operando1*operando2;
-										if(caracter=='/')
-											operando1=operando1/operando2;
+										caracter=miStack.pop();
+										operando2=Character.getNumericValue(caracter);
+										lCadena-=1;
+										bOperando=true;
 									}
-									catch(Exception e)
+									else if (miStack.peek()=='+'||miStack.peek()=='-'||miStack.peek()=='*'||miStack.peek()=='/'&&bOperando==true)
+									{
+										caracter=miStack.pop();
+										lCadena-=1;
+										bOperando=false;
+										/*try
+										{*/
+											if(caracter=='+')
+												operando1=operando1+operando2;
+											if(caracter=='-')
+												operando1=operando1-operando2;
+											if(caracter=='*')
+												operando1=operando1*operando2;
+											if(caracter=='/'&&operando2!=0)
+												operando1=operando1/operando2;
+											if(caracter=='/'&&operando2==0)
+											{
+												System.out.println("Error,division por cero!");
+												bandera=false;
+											}
+											
+										/*}
+										catch(Exception e)
+										{
+											bandera=false;
+											lCadena-=1;
+										}*/
+									}
+									else if (miStack.peek()!='+'||miStack.peek()!='-'||miStack.peek()!='*'||miStack.peek()!='/'&&bandera==true)
 									{
 										bandera=false;
-										lCadena-=1;
 									}
+									
 								}
-								else if (miStack.peek()!='+'||miStack.peek()!='-'||miStack.peek()!='*'||miStack.peek()!='/')
+								else if(miStack.peek()!=32)
 								{
 									bandera=false;
 								}
 								
-							}
-							else if(miStack.peek()!=32)
+							/*}
+							catch (Exception e)
 							{
 								bandera=false;
-							}
-							
-						}
-						catch (Exception e)
-						{
-							bandera=false;
-						}
+							}*/
+					}//Aqui termina el while
 				}
+				/*}
+				catch (Exception e)
+				{
+					bandera=false;
+				}*/
 			}
-			}
-			catch (Exception e)
-			{
-				bandera=false;
-			}
-		}
+	}
+	catch (Exception e)
+	{
+		bandera=false;
+	}
 		resultado=operando1;	
 		return bandera;
 	}
