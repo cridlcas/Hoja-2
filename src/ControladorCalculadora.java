@@ -16,6 +16,13 @@ public class ControladorCalculadora implements Calculadora {
 	
 	public ControladorCalculadora()
 	{
+		
+		ListFactory lFactory = new ListFactory();
+		//List miStack=lFactory.getList();
+		
+		
+		CalculadoraFactory cFactory=new CalculadoraFactory();
+		Calculadora calcu =cFactory.getCalculadora(1);
 		cadena="";
 		resultado=0;
 	}
